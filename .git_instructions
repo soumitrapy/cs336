@@ -1,0 +1,50 @@
+Yes, this is exactly what **Git submodules** are for.
+
+## How it works
+
+1. **Your main repo** is a regular GitHub repository
+2. **Subfolders** are submodules — pointers to specific commits in other repositories (your forks)
+3. You can sync (update) each submodule independently
+
+## Setup
+
+**Add a forked repo as a submodule:**
+```bash
+git submodule add https://github.com/you/forked-repo path/to/subfolder
+git commit -m "Add submodule"
+git push
+```
+
+**Clone the main repo with all submodules:**
+```bash
+git clone --recurse-submodules https://github.com/you/main-repo
+```
+
+## Syncing only a specific submodule
+
+```bash
+# Update one specific submodule
+git submodule update --remote path/to/subfolder
+
+# Or cd into it and pull like a normal repo
+cd path/to/subfolder
+git fetch upstream      # from the original repo you forked
+git merge upstream/main
+cd ..
+git add path/to/subfolder
+git commit -m "Update submodule"
+```
+
+## Key behaviors
+
+- The main repo stores a **commit hash** for each submodule, not the files themselves
+- Each submodule is an independent git repo — you can push/pull/branch inside it separately
+- Other contributors need to run `git submodule update --init` after cloning to populate subfolders
+- You can update submodules independently without touching the rest of the main repo
+
+## Caveats
+
+- Submodules add complexity (easy to forget to commit the pointer update in the parent repo)
+- An alternative is **git subtree**, which copies the code in rather than linking — simpler but harder to sync back upstream
+
+For your use case (forked repos you want to occasionally sync with upstream), submodules are the right tool.
