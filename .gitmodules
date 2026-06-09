@@ -1,0 +1,6 @@
+[submodule "assignment2-systems"]
+	path = assignment2-systems
+	url = git@github.com:soumitrapy/cs336_assignment2-systems.git
+[submodule "assignment1-basics"]
+	path = assignment1-basics
+	url = git@github.com:soumitrapy/cs336_assignment1-basics.git
