@@ -1,6 +1,0 @@
-[submodule "assignments/assignment1-basics"]
-	path = assignments/assignment1-basics
-	url = https://github.com/soumitrapy/cs336_assignment1-basics.git
-[submodule "assignments/assignment2-systems"]
-	path = assignments/assignment2-systems
-	url = https://github.com/soumitrapy/cs336_assignment2-systems.git
